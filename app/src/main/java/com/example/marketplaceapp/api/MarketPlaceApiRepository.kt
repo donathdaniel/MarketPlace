@@ -1,9 +1,6 @@
 package com.example.marketplaceapp.api
 
-import com.example.marketplaceapp.model.LoginCredential
-import com.example.marketplaceapp.model.LoginResponse
-import com.example.marketplaceapp.model.RegistrationCredential
-import com.example.marketplaceapp.model.RegistrationResponse
+import com.example.marketplaceapp.model.*
 import retrofit2.Response
 
 class MarketPlaceApiRepository {
@@ -18,6 +15,10 @@ class MarketPlaceApiRepository {
 
     suspend fun login(loginCredential : LoginCredential): Response<LoginResponse>{
         return MarketPlaceRetrofitInstance.marketPlaceAPI.login(loginCredential)
+    }
+
+    suspend fun getProducts(token : String): Response<ProductCredential>{
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.getProducts(token)
     }
 
 }

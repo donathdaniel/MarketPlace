@@ -1,39 +1,65 @@
 package com.example.marketplaceapp
 
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.marketplaceapp.api.MarketPlaceApiRepository
 import com.example.marketplaceapp.api.MarketPlaceApiViewModel
+import com.example.marketplaceapp.fragments.ProfileFragment
+import com.example.marketplaceapp.fragments.TimelineFragment
 import com.example.marketplaceapp.fragments.login.LoginFragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var profileIconIcon: MenuItem
+    lateinit var sharedPref : SharedPreferences
+
+    lateinit var marketPlaceApiViewModel: MarketPlaceApiViewModel
+
     lateinit var bottomNavigation: BottomNavigationView
     lateinit var topAppBar: MaterialToolbar
-    lateinit var marketPlaceApiViewModel: MarketPlaceApiViewModel
+    lateinit var profileIcon: MenuItem
+    lateinit var filterIcon: MenuItem
+    lateinit var searchIcon: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        bottomNavigation = findViewById(R.id.bottomNavigation)
-        topAppBar = findViewById(R.id.topAppBar)
+        sharedPref = applicationContext.getSharedPreferences("com.example.marketplaceapp", Context.MODE_PRIVATE)
 
-        bottomNavigation.visibility = View.GONE
-        topAppBar.visibility = View.GONE
+        bottomNavigation = findViewById(R.id.bottom_navigation)
+        topAppBar = findViewById(R.id.top_app_bar)
+
+//        bottomNavigation.visibility = View.GONE
+//        topAppBar.visibility = View.GONE
         initBottomNavigation()
-        profileIconIcon = topAppBar.menu.findItem(R.id.profile)
 
-        replaceFragment(LoginFragment(), R.id.fragment_container)
+        profileIcon = topAppBar.menu.findItem(R.id.profile_menu_item)
+        filterIcon = topAppBar.menu.findItem(R.id.filter_menu_item)
+        searchIcon = topAppBar.menu.findItem(R.id.search_menu_item)
+        initTopBar()
+
 
         marketPlaceApiViewModel = MarketPlaceApiViewModel(MarketPlaceApiRepository())
 
+        replaceFragment(ProfileFragment(), R.id.fragment_container)
+
+//        val accessToken: String? = sharedPref.getString("accessToken", "asdf1234")
+//        Log.d("accessToken", "get " + accessToken.toString())
+//
+//        if(accessToken == null || accessToken == "asdf1234") {
+//
+//        }
+//        else{
+//            replaceFragment(TimelineFragment(), R.id.fragment_container)
+//        }
     }
 
     fun replaceFragment(fragment: Fragment, containerId: Int, addToBackStack:Boolean = false, withAnimation:Boolean = false){
@@ -53,8 +79,8 @@ class MainActivity : AppCompatActivity() {
             when(item.itemId) {
                 R.id.timeline -> {
 
-//                    if(fragment !is HospitalListFragment)
-//                        replaceFragment(HospitalListFragment(), R.id.fragment_container)
+                    if(fragment !is TimelineFragment)
+                        replaceFragment(TimelineFragment(), R.id.fragment_container)
                     true
                 }
                 R.id.my_market -> {
@@ -75,8 +101,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initTopBar(){
-        profileIconIcon.setOnMenuItemClickListener {
-            //replaceFragment(ProfileFragment(), R.id.fragment_container)
+        profileIcon.setOnMenuItemClickListener {
+            replaceFragment(ProfileFragment(), R.id.fragment_container)
+            true
+        }
+        filterIcon.setOnMenuItemClickListener {
+            //TODO
+            true
+        }
+        searchIcon.setOnMenuItemClickListener {
+            //TODO
             true
         }
     }

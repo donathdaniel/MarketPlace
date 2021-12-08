@@ -14,8 +14,8 @@ data class RegistrationCredential (
     @SerializedName("firebase_token")
     val token: String = String(),
 
-    @SerializedName("userImage")
-    val userImage: File,
+    //@SerializedName("userImage")
+    //val userImage: File,
 )
 
 data class RegistrationResponse(
