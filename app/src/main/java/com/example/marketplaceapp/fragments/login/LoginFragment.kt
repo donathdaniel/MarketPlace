@@ -1,32 +1,37 @@
 package com.example.marketplaceapp.fragments.login
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
+import androidx.lifecycle.Observer
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
+import com.example.marketplaceapp.fragments.TimelineFragment
 import com.example.marketplaceapp.fragments.forgotPassword.ForgotPasswordFragment
 import com.example.marketplaceapp.fragments.register.RegisterFragment
 import com.example.marketplaceapp.model.LoginCredential
 import com.google.android.material.textfield.TextInputLayout
-import retrofit2.Response.error
 
 class LoginFragment : BaseFragment() {
 
     lateinit var logInButton : Button
     lateinit var signUpButton : Button
     lateinit var clickHereTextView : TextView
-    lateinit var emailTextLayout : TextInputLayout
-    lateinit var passwordTextLayout : TextInputLayout
-    lateinit var emailTextView : TextView
+
+    lateinit var usernameTextViewLayout : TextInputLayout
+    lateinit var passwordTextViewLayout : TextInputLayout
+    lateinit var usernameTextView : TextView
     lateinit var passwordTextView : TextView
 
+    @SuppressLint("CommitPrefEdits")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,14 +43,21 @@ class LoginFragment : BaseFragment() {
         signUpButton = view.findViewById(R.id.sign_up_button)
         clickHereTextView = view.findViewById(R.id.click_here_text_view)
 
-        emailTextLayout = view.findViewById(R.id.email_text_view_layout)
-        passwordTextLayout = view.findViewById(R.id.password_text_view_layout)
-        emailTextView = view.findViewById(R.id.email_text_view)
+        usernameTextViewLayout = view.findViewById(R.id.username_text_view_layout)
+        passwordTextViewLayout = view.findViewById(R.id.password_text_view_layout)
+        usernameTextView = view.findViewById(R.id.username_text_view)
         passwordTextView = view.findViewById(R.id.password_text_view)
 
         (mActivity as MainActivity).marketPlaceApiViewModel.loginResponse.observe(viewLifecycleOwner, { response ->
             if (response.isSuccessful){
                 Log.d("Login",response.body().toString())
+
+//                val accessToken : String? = response.body()?.token
+//                (mActivity as MainActivity).sharedPref.edit()?.putString("accessToken", accessToken)?.apply()
+//                Log.d("accessToken", "put " + accessToken.toString())
+//
+//                Toast.makeText(context, "Login successfully", Toast.LENGTH_SHORT).show()
+//                (mActivity as MainActivity).replaceFragment(TimelineFragment(), R.id.fragment_container)
             }
         })
 
@@ -56,13 +68,10 @@ class LoginFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         logInButton.setOnClickListener{
-            //TODO api
-            (mActivity as MainActivity).topAppBar.visibility = View.VISIBLE
-            //(mActivity as MainActivity).replaceFragment(TimelineFragment(), R.id.fragment_container)
-            if(validateInput()){
-                (mActivity as MainActivity).marketPlaceApiViewModel.login(LoginCredential(emailTextView.text.toString(), passwordTextView.text.toString()))
-            }
 
+            if(validateInput()){
+                (mActivity as MainActivity).marketPlaceApiViewModel.login(LoginCredential(usernameTextView.text.toString(), passwordTextView.text.toString()))
+            }
         }
 
         signUpButton.setOnClickListener {
@@ -74,19 +83,20 @@ class LoginFragment : BaseFragment() {
     }
 
     private fun validateInput(): Boolean {
-        emailTextLayout.error = null
-        passwordTextLayout.error = null
+        usernameTextViewLayout.error = null
+        passwordTextViewLayout.error = null
 
         when{
-            emailTextView.text.toString().isEmpty() -> {
-                emailTextLayout.error = getString(R.string.error)
+            usernameTextView.text.toString().isEmpty() -> {
+                usernameTextViewLayout.error = getString(R.string.error)
                 return false
             }
             passwordTextView.text.toString().isEmpty() -> {
-                passwordTextLayout.error = getString(R.string.error)
+                passwordTextViewLayout.error = getString(R.string.error)
                 return false
             }
         }
         return true
     }
+
 }

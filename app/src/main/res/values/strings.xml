@@ -26,4 +26,10 @@
     <string name="forgot_password_text">We will sen you an email with instructions on how to reset your password</string>
     <string name="email_me">Email me</string>
     <string name="error">Assistive text</string>
+    <string name="full_name">Full name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="username">Username</string>
+    <string name="order_now">Order now</string>
+    <string name="client_photo">Client Photo</string>
+    <string name="give_us_details">Give us details about your fare</string>
 </resources>
