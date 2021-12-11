@@ -1,7 +1,6 @@
 package com.example.marketplaceapp.fragments.login
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,26 +9,23 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
 import com.example.marketplaceapp.fragments.TimelineFragment
-import com.example.marketplaceapp.fragments.forgotPassword.ForgotPasswordFragment
-import com.example.marketplaceapp.fragments.register.RegisterFragment
 import com.example.marketplaceapp.model.LoginCredential
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginFragment : BaseFragment() {
 
-    lateinit var logInButton : Button
-    lateinit var signUpButton : Button
-    lateinit var clickHereTextView : TextView
+    lateinit var logInButton: Button
+    lateinit var signUpButton: Button
+    lateinit var clickHereTextView: TextView
 
-    lateinit var usernameTextViewLayout : TextInputLayout
-    lateinit var passwordTextViewLayout : TextInputLayout
-    lateinit var usernameTextView : TextView
-    lateinit var passwordTextView : TextView
+    lateinit var usernameTextViewLayout: TextInputLayout
+    lateinit var passwordTextViewLayout: TextInputLayout
+    lateinit var usernameTextView: TextView
+    lateinit var passwordTextView: TextView
 
     @SuppressLint("CommitPrefEdits")
     override fun onCreateView(
@@ -48,18 +44,36 @@ class LoginFragment : BaseFragment() {
         usernameTextView = view.findViewById(R.id.username_text_view)
         passwordTextView = view.findViewById(R.id.password_text_view)
 
-        (mActivity as MainActivity).marketPlaceApiViewModel.loginResponse.observe(viewLifecycleOwner, { response ->
-            if (response.isSuccessful){
-                Log.d("Login",response.body().toString())
+        (mActivity as MainActivity).marketPlaceApiViewModel.loginResponse.observe(
+            viewLifecycleOwner,
+            { response ->
+                Log.d("Login", response.errorBody().toString())
 
-//                val accessToken : String? = response.body()?.token
-//                (mActivity as MainActivity).sharedPref.edit()?.putString("accessToken", accessToken)?.apply()
-//                Log.d("accessToken", "put " + accessToken.toString())
-//
-//                Toast.makeText(context, "Login successfully", Toast.LENGTH_SHORT).show()
-//                (mActivity as MainActivity).replaceFragment(TimelineFragment(), R.id.fragment_container)
-            }
-        })
+                if (response.isSuccessful) {
+                    Log.d("Login", response.body().toString())
+
+                    val accessToken: String? = response.body()?.token
+                    (mActivity as MainActivity).sharedPref.edit()
+                        ?.putString("accessToken", accessToken)?.apply()
+                    (mActivity as MainActivity).sharedPref.edit()
+                        ?.putString("username", response.body()?.username)?.apply()
+
+                    val expiredTime: Long? =
+                        response.body()?.creationTime?.plus(response.body()?.refreshTime!!)
+                    (mActivity as MainActivity).sharedPref.edit()
+                        ?.putString("expiredTime", expiredTime.toString())?.apply()
+
+                    Log.d("accessToken", "put " + accessToken.toString())
+
+                    Toast.makeText(context, "Login successful", Toast.LENGTH_SHORT).show()
+                    (mActivity as MainActivity).replaceFragment(
+                        TimelineFragment(),
+                        R.id.fragment_container
+                    )
+                } else {
+                    Toast.makeText(context, "Login unsuccessful", Toast.LENGTH_SHORT).show()
+                }
+            })
 
         return view
     }
@@ -67,18 +81,31 @@ class LoginFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        logInButton.setOnClickListener{
+        logInButton.setOnClickListener {
 
-            if(validateInput()){
-                (mActivity as MainActivity).marketPlaceApiViewModel.login(LoginCredential(usernameTextView.text.toString(), passwordTextView.text.toString()))
+            if (validateInput()) {
+                (mActivity as MainActivity).marketPlaceApiViewModel.login(
+                    LoginCredential(
+                        usernameTextView.text.toString(),
+                        passwordTextView.text.toString()
+                    )
+                )
             }
         }
 
         signUpButton.setOnClickListener {
-            (mActivity as MainActivity).replaceFragment(RegisterFragment(),R.id.fragment_container,true)
+            (mActivity as MainActivity).replaceFragment(
+                RegisterFragment(),
+                R.id.fragment_container,
+                true
+            )
         }
         clickHereTextView.setOnClickListener {
-            (mActivity as MainActivity).replaceFragment(ForgotPasswordFragment(),R.id.fragment_container,true)
+            (mActivity as MainActivity).replaceFragment(
+                ForgotPasswordFragment(),
+                R.id.fragment_container,
+                true
+            )
         }
     }
 
@@ -86,7 +113,7 @@ class LoginFragment : BaseFragment() {
         usernameTextViewLayout.error = null
         passwordTextViewLayout.error = null
 
-        when{
+        when {
             usernameTextView.text.toString().isEmpty() -> {
                 usernameTextViewLayout.error = getString(R.string.error)
                 return false

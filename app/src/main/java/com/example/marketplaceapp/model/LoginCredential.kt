@@ -14,12 +14,18 @@ data class LoginResponse (
     @SerializedName("phone_number")
     val phoneNumber : Long,
 
-    @SerializedName("image_path")
-    val imagePath: String,
+//    @SerializedName("image_path")
+//    val imagePath: String,
+
     val token: String,
     @SerializedName("creation_time")
     val creationTime: Long,
 
     @SerializedName("refresh_time")
     val refreshTime: Long
+)
+
+data class ResetPasswordCredential(
+    val username : String,
+    val email : String
 )

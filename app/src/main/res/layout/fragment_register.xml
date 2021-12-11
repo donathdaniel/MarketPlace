@@ -10,14 +10,15 @@
         android:layout_height="wrap_content"
         android:background="@color/black"
         android:orientation="vertical"
-        tools:context=".fragments.register.RegisterFragment">
+        tools:context=".fragments.login.RegisterFragment">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
-            android:src="@drawable/ic_bazaar_logo_coloured" />
+            android:src="@drawable/ic_bazaar_logo_coloured"
+            android:contentDescription="@string/bazaar"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

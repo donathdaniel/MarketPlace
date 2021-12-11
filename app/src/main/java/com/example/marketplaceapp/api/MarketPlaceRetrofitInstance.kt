@@ -11,13 +11,14 @@ object MarketPlaceRetrofitInstance {
 
     private val retrofit by lazy {
         val httpClient = OkHttpClient.Builder()
-            .callTimeout(2000, TimeUnit.MINUTES)
-            .connectTimeout(2000, TimeUnit.SECONDS)
-            .readTimeout(3000, TimeUnit.SECONDS)
-            .writeTimeout(3000, TimeUnit.SECONDS)
+            .callTimeout(20, TimeUnit.MINUTES)
+            .connectTimeout(20, TimeUnit.SECONDS)
+            .readTimeout(30, TimeUnit.SECONDS)
+            .writeTimeout(30, TimeUnit.SECONDS)
             .build()
 
-        Retrofit.Builder().baseUrl(BASE_URL).client(httpClient).addConverterFactory(GsonConverterFactory.create())
+        Retrofit.Builder().baseUrl(BASE_URL).client(httpClient)
+            .addConverterFactory(GsonConverterFactory.create())
             .build()
 
     }

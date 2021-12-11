@@ -36,14 +36,23 @@
             android:text="25 RON/l"
             />
 
+        <ImageView
+            android:id="@+id/owner_image_view"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@id/product_image_view"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_avatar" />
+
         <TextView
             android:id="@+id/owner_name_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
             android:layout_marginTop="15dp"
             android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@id/product_image_view"
+            app:layout_constraintStart_toEndOf="@id/owner_image_view"
             app:layout_constraintTop_toTopOf="parent"
             android:textStyle="bold"
             android:text="Kristina Watson"
@@ -51,15 +60,16 @@
 
         <TextView
             android:id="@+id/product_name_text_view"
-            android:layout_width="wrap_content"
+            android:layout_width="180dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:textSize="18sp"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
             app:layout_constraintStart_toEndOf="@id/product_image_view"
             app:layout_constraintTop_toBottomOf="@id/owner_name_text_view"
             android:textStyle="bold"
-            android:maxLines="1"
-            android:ellipsize="end"
             android:textColor="@color/black"
             android:text="P{alinka}de prune"
             />

@@ -32,4 +32,6 @@
     <string name="order_now">Order now</string>
     <string name="client_photo">Client Photo</string>
     <string name="give_us_details">Give us details about your fare</string>
+    <string name="Loading">Loading…</string>
+    <string name="bazaar">Bazaar</string>
 </resources>
