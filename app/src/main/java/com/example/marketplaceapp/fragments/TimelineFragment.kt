@@ -55,6 +55,7 @@ class TimelineFragment : BaseFragment() {
 
         if (accessToken != null) {
             (mActivity as MainActivity).marketPlaceApiViewModel.getProducts(accessToken)
+
         }
 
         return view

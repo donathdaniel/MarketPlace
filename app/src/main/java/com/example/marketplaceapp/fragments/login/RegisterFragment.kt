@@ -1,4 +1,4 @@
-package com.example.marketplaceapp.fragments.register
+package com.example.marketplaceapp.fragments.login
 
 import android.os.Bundle
 import android.util.Log
@@ -7,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
-import com.example.marketplaceapp.fragments.TimelineFragment
-import com.example.marketplaceapp.fragments.login.LoginFragment
-import com.example.marketplaceapp.model.LoginCredential
 import com.example.marketplaceapp.model.RegistrationCredential
 import com.google.android.material.textfield.TextInputLayout
 
@@ -52,8 +50,20 @@ class RegisterFragment : BaseFragment() {
         (mActivity as MainActivity).marketPlaceApiViewModel.registerResponse.observe(
             viewLifecycleOwner,
             { response ->
+                Log.d("Register", response.errorBody().toString())
                 if (response.isSuccessful) {
-                    Log.d("Login", response.body().toString())
+                    Log.d("Register", response.body().toString())
+
+                    Toast.makeText(context, "You need to activate your account", Toast.LENGTH_SHORT)
+                        .show()
+                    (mActivity as MainActivity).replaceFragment(
+                        LoginFragment(),
+                        R.id.fragment_container
+                    )
+                }
+                else{
+                    Toast.makeText(context, "Registration failed", Toast.LENGTH_SHORT)
+                        .show()
                 }
             })
 
@@ -76,10 +86,6 @@ class RegisterFragment : BaseFragment() {
                         phoneNumberTextView.text.toString().toLong()
                     )
                 )
-
-                (mActivity as MainActivity).marketPlaceApiViewModel.activation(usernameTextView.text.toString())
-
-                (mActivity as MainActivity).replaceFragment(TimelineFragment(), R.id.fragment_container)
             }
         }
 

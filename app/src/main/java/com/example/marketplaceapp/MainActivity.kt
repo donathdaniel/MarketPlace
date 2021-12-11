@@ -4,15 +4,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.marketplaceapp.api.MarketPlaceApiRepository
 import com.example.marketplaceapp.api.MarketPlaceApiViewModel
 import com.example.marketplaceapp.fragments.ProfileFragment
+import com.example.marketplaceapp.fragments.splash.SplashFragment
 import com.example.marketplaceapp.fragments.TimelineFragment
-import com.example.marketplaceapp.fragments.login.LoginFragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -37,8 +36,8 @@ class MainActivity : AppCompatActivity() {
         bottomNavigation = findViewById(R.id.bottom_navigation)
         topAppBar = findViewById(R.id.top_app_bar)
 
-//        bottomNavigation.visibility = View.GONE
-//        topAppBar.visibility = View.GONE
+        bottomNavigation.visibility = View.GONE
+        topAppBar.visibility = View.GONE
         initBottomNavigation()
 
         profileIcon = topAppBar.menu.findItem(R.id.profile_menu_item)
@@ -49,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         marketPlaceApiViewModel = MarketPlaceApiViewModel(MarketPlaceApiRepository())
 
-        replaceFragment(ProfileFragment(), R.id.fragment_container)
+        replaceFragment(SplashFragment(), R.id.fragment_container)
 
 //        val accessToken: String? = sharedPref.getString("accessToken", "asdf1234")
 //        Log.d("accessToken", "get " + accessToken.toString())

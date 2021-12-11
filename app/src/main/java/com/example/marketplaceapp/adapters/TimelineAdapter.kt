@@ -11,10 +11,12 @@ import com.bumptech.glide.Glide
 import com.example.marketplaceapp.R
 import com.example.marketplaceapp.model.Product
 
-class TimelineAdapter(private val productList : List<Product>) : RecyclerView.Adapter<TimelineAdapter.ViewHolder>() {
+class TimelineAdapter(private val productList: List<Product>) :
+    RecyclerView.Adapter<TimelineAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineAdapter.ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.timeline_recyclerview_element, parent, false)
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.timeline_recyclerview_element, parent, false)
         return ViewHolder(view)
     }
 
@@ -29,7 +31,8 @@ class TimelineAdapter(private val productList : List<Product>) : RecyclerView.Ad
             .circleCrop()
             .into(holder.productImageView)
 
-        holder.priceTextView.text = itemsViewModel.pricePerUnit + " " + itemsViewModel.priceType + "/" + itemsViewModel.amountType
+        holder.priceTextView.text =
+            itemsViewModel.pricePerUnit + " " + itemsViewModel.priceType + "/" + itemsViewModel.amountType
         holder.ownerNameTextView.text = itemsViewModel.username
         holder.productNameTextView.text = itemsViewModel.title
     }

@@ -5,19 +5,31 @@ import retrofit2.Response
 
 class MarketPlaceApiRepository {
 
-    suspend fun register(registrationCredential : RegistrationCredential): Response<RegistrationResponse>{
+
+    // User
+    suspend fun register(registrationCredential: RegistrationCredential): Response<RegistrationResponse> {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.registration(registrationCredential)
     }
 
-    suspend fun activation(username : String): Response<String>{
-        return MarketPlaceRetrofitInstance.marketPlaceAPI.activation(username)
-    }
+//    suspend fun activation(username : String): Response<String>{
+//        return MarketPlaceRetrofitInstance.marketPlaceAPI.activation(username)
+//    }
 
-    suspend fun login(loginCredential : LoginCredential): Response<LoginResponse>{
+    suspend fun login(loginCredential: LoginCredential): Response<LoginResponse> {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.login(loginCredential)
     }
 
-    suspend fun getProducts(token : String): Response<ProductCredential>{
+    suspend fun resetPassword(resetPasswordCredential: ResetPasswordCredential): Response<GeneralResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.resetPassword(resetPasswordCredential)
+    }
+
+    suspend fun getUserInfo(username : String) : Response<UserInfoResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.getUserInfo(username)
+    }
+
+
+    //Products
+    suspend fun getProducts(token: String): Response<ProductCredential> {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.getProducts(token)
     }
 
