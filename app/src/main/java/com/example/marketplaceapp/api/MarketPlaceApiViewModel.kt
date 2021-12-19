@@ -20,7 +20,6 @@ class MarketPlaceApiViewModel(private val repository: MarketPlaceApiRepository) 
 
     var getProductResponse: MutableLiveData<Response<ProductCredential>> = MutableLiveData()
 
-
     // User
     fun registration(registrationCredential: RegistrationCredential) {
         viewModelScope.launch {

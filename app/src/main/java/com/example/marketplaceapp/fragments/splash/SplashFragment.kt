@@ -54,13 +54,12 @@ class SplashFragment : BaseFragment() {
             }
 
             override fun onFinish() {
-                activity?.window?.clearFlags(
-                    WindowManager.LayoutParams.FLAG_FULLSCREEN
-                )
-
                 (mActivity as MainActivity).replaceFragment(
                     LoginFragment(),
                     R.id.fragment_container
+                )
+                activity?.window?.clearFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
                 )
             }
         }.start()
