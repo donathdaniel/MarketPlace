@@ -47,8 +47,6 @@ class LoginFragment : BaseFragment() {
         (mActivity as MainActivity).marketPlaceApiViewModel.loginResponse.observe(
             viewLifecycleOwner,
             { response ->
-                Log.d("Login", response.errorBody().toString())
-
                 if (response.isSuccessful) {
                     Log.d("Login", response.body().toString())
 
@@ -71,6 +69,8 @@ class LoginFragment : BaseFragment() {
                         R.id.fragment_container
                     )
                 } else {
+                    Log.d("Login", response.errorBody().toString())
+
                     Toast.makeText(context, "Login unsuccessful", Toast.LENGTH_SHORT).show()
                 }
             })

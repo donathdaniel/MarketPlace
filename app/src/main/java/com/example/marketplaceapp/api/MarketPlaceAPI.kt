@@ -40,11 +40,18 @@ interface MarketPlaceAPI {
     @GET("products")
     suspend fun getProducts(
         @Header("token") token: String,
-        @Header("limit") limit: Int? = 200,
+        @Header("limit") limit: Int? = null,
         @Header("filter") filter: String? = null,
-        @Header("sort") sort: String? = null
+        @Header("sort") sort: String? = null,
+        @Header("skip") skip: Int? = null
         //@Header("sort") sort : String? = "{\"creation_time\" : -1}"
-    ): Response<ProductCredential>
+    ): Response<ProductBase>
+
+    @POST("products/add")
+    suspend fun addProducts(
+        @Header("token") token: String,
+        @Body productAdd: ProductAdd
+    ): Response<ProductAddResponse>
 
 
 }

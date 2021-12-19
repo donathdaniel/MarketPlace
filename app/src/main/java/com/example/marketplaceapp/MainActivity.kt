@@ -9,6 +9,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.marketplaceapp.api.MarketPlaceApiRepository
 import com.example.marketplaceapp.api.MarketPlaceApiViewModel
+import com.example.marketplaceapp.fragments.MyMarketFragment
 import com.example.marketplaceapp.fragments.ProfileFragment
 import com.example.marketplaceapp.fragments.splash.SplashFragment
 import com.example.marketplaceapp.fragments.TimelineFragment
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        sharedPref = applicationContext.getSharedPreferences("com.example.marketplaceapp", Context.MODE_PRIVATE)
+        sharedPref = applicationContext.getSharedPreferences(Constant.sharedPreferenceName, Context.MODE_PRIVATE)
 
         bottomNavigation = findViewById(R.id.bottom_navigation)
         topAppBar = findViewById(R.id.top_app_bar)
@@ -84,8 +85,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.my_market -> {
 
-//                    if(fragment !is FeedbackFragment)
-//                        replaceFragment(FeedbackFragment(), R.id.fragment_container)
+                    if(fragment !is MyMarketFragment)
+                        replaceFragment(MyMarketFragment(), R.id.fragment_container)
                     true
                 }
                 R.id.my_fares -> {
