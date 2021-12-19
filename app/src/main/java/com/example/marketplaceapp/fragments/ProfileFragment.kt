@@ -16,6 +16,7 @@ import com.example.marketplaceapp.adapters.TimelineAdapter
 class ProfileFragment : BaseFragment() {
 
     lateinit var emailTextView : TextView
+    lateinit var mainUsernameTextView : TextView
     lateinit var usernameTextView : TextView
     lateinit var phoneNumberTextView : TextView
 //    lateinit var passwordTextView : TextView
@@ -27,22 +28,27 @@ class ProfileFragment : BaseFragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
+        mainUsernameTextView = view.findViewById(R.id.username_text_view)
+
         emailTextView = view.findViewById(R.id.email_text_view)
-        usernameTextView = view.findViewById(R.id.username_text_view)
+        usernameTextView = view.findViewById(R.id.user_name_text_view)
         phoneNumberTextView = view.findViewById(R.id.phone_number_text_view)
 //        passwordTextView = view.findViewById(R.id.password_text_view)
 
         (mActivity as MainActivity).marketPlaceApiViewModel.userInfoResponse.observe(
             viewLifecycleOwner,
             { response ->
-                Log.d("getUserInfo", response.code().toString())
                 if (response.isSuccessful) {
                     Log.d("getUserInfo", response.body().toString())
 
+                    mainUsernameTextView.text = response.body()?.data!![0].username
                     emailTextView.text = response.body()?.data!![0].email
                     usernameTextView.text = response.body()?.data!![0].username
                     phoneNumberTextView.text = response.body()?.data!![0].phoneNumber.toString()
 
+                }
+                else{
+                    Log.d("getUserInfo", response.code().toString())
                 }
             })
 
