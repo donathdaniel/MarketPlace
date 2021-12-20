@@ -1,4 +1,4 @@
-package com.example.marketplaceapp.fragments
+package com.example.marketplaceapp.UI.myMarket
 
 import android.os.Bundle
 import android.util.Log
@@ -6,17 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import android.widget.Toast
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
-import com.example.marketplaceapp.adapters.MyMarketAdapter
-import com.example.marketplaceapp.fragments.login.ForgotPasswordFragment
+import com.example.marketplaceapp.UI.myMarket.adapter.MyMarketAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MyMarketFragment : BaseFragment() {
+    private val myMarketViewModel : MyMarketViewModel by viewModels()
+
     private lateinit var timelineAdapter: MyMarketAdapter
     private lateinit var recyclerview: RecyclerView
     private lateinit var progressBar : ProgressBar
@@ -29,7 +30,7 @@ class MyMarketFragment : BaseFragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_my_market, container, false)
 
-        (mActivity as MainActivity).marketPlaceApiViewModel.getProductResponse.observe(
+        myMarketViewModel.getProductResponse.observe(
             viewLifecycleOwner,
             { response ->
 
@@ -72,7 +73,7 @@ class MyMarketFragment : BaseFragment() {
         username = "{\"username\": \"qwer\"}"
 
         if (accessToken != null) {
-            (mActivity as MainActivity).marketPlaceApiViewModel.getProducts(accessToken, null, username)
+            myMarketViewModel.getProducts(accessToken, null, username)
 
         }
         return view

@@ -1,4 +1,4 @@
-package com.example.marketplaceapp.adapters
+package com.example.marketplaceapp.UI.timeline.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -14,14 +14,14 @@ import com.example.marketplaceapp.model.Product
 class TimelineAdapter(private val productList: List<Product>) :
     RecyclerView.Adapter<TimelineAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimelineAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.timeline_recyclerview_element, parent, false)
         return ViewHolder(view)
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: TimelineAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemsViewModel = productList[position]
 
         Glide.with(holder.itemView.context)

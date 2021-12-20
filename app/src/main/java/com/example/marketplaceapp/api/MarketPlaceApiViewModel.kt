@@ -12,12 +12,12 @@ class MarketPlaceApiViewModel(private val repository: MarketPlaceApiRepository) 
     var registerResponse: MutableLiveData<Response<RegistrationResponse>> = MutableLiveData()
 
     //    var activationResponse: MutableLiveData<Response<String>> = MutableLiveData()
-    var loginResponse: MutableLiveData<Response<LoginResponse>> = MutableLiveData()
+//    var loginResponse: MutableLiveData<Response<LoginResponse>> = MutableLiveData()
     val resetPasswordResponse: MutableLiveData<Response<GeneralResponse>> = MutableLiveData()
     val userInfoResponse: MutableLiveData<Response<UserInfoResponse>> = MutableLiveData()
 
 
-    var getProductResponse: MutableLiveData<Response<ProductBase>> = MutableLiveData()
+    var getProductResponse: MutableLiveData<Response<ProductResponse>> = MutableLiveData()
     var addProductResponse: MutableLiveData<Response<ProductAddResponse>> = MutableLiveData()
 
     // User
@@ -35,12 +35,12 @@ class MarketPlaceApiViewModel(private val repository: MarketPlaceApiRepository) 
 //        }
 //    }
 
-    fun login(loginCredential: LoginCredential) {
-        viewModelScope.launch {
-            val response = repository.login(loginCredential)
-            loginResponse.value = response
-        }
-    }
+//    fun login(loginCredential: LoginCredential) {
+//        viewModelScope.launch {
+//            val response = repository.login(loginCredential)
+//            loginResponse.value = response
+//        }
+//    }
 
     fun resetPassword(resetPasswordCredential: ResetPasswordCredential) {
         viewModelScope.launch {

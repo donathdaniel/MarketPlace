@@ -1,4 +1,4 @@
-package com.example.marketplaceapp
+package com.example.marketplaceapp.constants
 
 import java.text.SimpleDateFormat
 import java.util.*

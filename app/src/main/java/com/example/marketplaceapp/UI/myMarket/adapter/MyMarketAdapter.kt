@@ -1,4 +1,4 @@
-package com.example.marketplaceapp.adapters
+package com.example.marketplaceapp.UI.myMarket.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -14,14 +14,14 @@ import com.example.marketplaceapp.model.Product
 class MyMarketAdapter(private val productList: List<Product>) :
     RecyclerView.Adapter<MyMarketAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyMarketAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.my_market_recyclerview_element, parent, false)
         return ViewHolder(view)
     }
 
     @SuppressLint("SetTextI18n", "ResourceAsColor")
-    override fun onBindViewHolder(holder: MyMarketAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemsViewModel = productList[position]
 
         Glide.with(holder.itemView.context)
@@ -36,8 +36,8 @@ class MyMarketAdapter(private val productList: List<Product>) :
         holder.ownerNameTextView.text = itemsViewModel.username
         holder.productNameTextView.text = itemsViewModel.title
 
-        var activeInactiveColor : Int
-        var activeInactiveText : String
+        val activeInactiveColor : Int
+        val activeInactiveText : String
         if (itemsViewModel.isActive) {
             Glide.with(holder.itemView.context)
                 .load(R.drawable.ic_active_product)

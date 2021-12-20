@@ -1,22 +1,22 @@
-package com.example.marketplaceapp.fragments
+package com.example.marketplaceapp.UI.myMarket
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.viewModels
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
 import com.example.marketplaceapp.model.ProductAdd
 import com.google.android.material.button.MaterialButtonToggleGroup
-import com.google.gson.annotations.SerializedName
-import java.io.File
 
 class CreateFareFragment : BaseFragment() {
+
+    private val createFareViewModel : CreateFareViewModel by viewModels()
 
     lateinit var emailTextView: TextView
     lateinit var usernameTextView: TextView
@@ -35,7 +35,7 @@ class CreateFareFragment : BaseFragment() {
         phoneNumberTextView = view.findViewById(R.id.phone_number_text_view)
         launchMyFairButton = view.findViewById(R.id.launch_my_fair_button)
 
-        (mActivity as MainActivity).marketPlaceApiViewModel.userInfoResponse.observe(
+        createFareViewModel.userInfoResponse.observe(
             viewLifecycleOwner,
             { response ->
                 if (response.isSuccessful) {
@@ -50,7 +50,7 @@ class CreateFareFragment : BaseFragment() {
                 }
             })
 
-        (mActivity as MainActivity).marketPlaceApiViewModel.addProductResponse.observe(
+        createFareViewModel.addProductResponse.observe(
             viewLifecycleOwner,
             { response ->
                 if(response.isSuccessful){
@@ -75,7 +75,7 @@ class CreateFareFragment : BaseFragment() {
         Log.d("username", username.toString())
 
         if (username != null && username != "asdf1234") {
-            (mActivity as MainActivity).marketPlaceApiViewModel.getUserInfo(username)
+            createFareViewModel.getUserInfo(username)
         }
 
         launchMyFairButton.setOnClickListener {
@@ -92,7 +92,7 @@ class CreateFareFragment : BaseFragment() {
             val toggleButton = view.findViewById<MaterialButtonToggleGroup>(R.id.toggle_button)
             val productActive: Boolean = toggleButton.checkedButtonId == R.id.active_toggle_button
 
-            (mActivity as MainActivity).marketPlaceApiViewModel.addProducts(
+            createFareViewModel.addProducts(
                 accessToken.toString(),
                 ProductAdd(
                     null,
@@ -110,26 +110,3 @@ class CreateFareFragment : BaseFragment() {
     }
 
 }
-
-
-//data class ProductAdd(
-//    val uploadImages: File? = null,
-//    val title: String,
-//    val description: String,
-//
-//    @SerializedName("price_per_unit")
-//    val price_per_unit: Int,
-//
-//    val unit: Int,
-//
-//    @SerializedName("is_active")
-//    val isActive: Boolean,
-//
-//    val rating: Double,
-//
-//    @SerializedName("amount_type")
-//    val amountType: String,
-//
-//    @SerializedName("price_type")
-//    val priceType: String,
-//)

@@ -1,4 +1,4 @@
-package com.example.marketplaceapp.fragments
+package com.example.marketplaceapp.UI.timeline
 
 import android.os.Bundle
 import android.util.Log
@@ -6,15 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
-import com.example.marketplaceapp.adapters.TimelineAdapter
+import com.example.marketplaceapp.UI.timeline.adapter.TimelineAdapter
 
 
 class TimelineFragment : BaseFragment() {
+
+    private val timelineViewModel : TimelineViewModel by viewModels()
+
     private lateinit var timelineAdapter: TimelineAdapter
     private lateinit var recyclerview: RecyclerView
     private lateinit var progressBar : ProgressBar
@@ -26,7 +30,7 @@ class TimelineFragment : BaseFragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_timeline, container, false)
 
-        (mActivity as MainActivity).marketPlaceApiViewModel.getProductResponse.observe(
+        timelineViewModel.getProductResponse.observe(
             viewLifecycleOwner,
             { response ->
                 Log.d("getProducts", response.code().toString())
@@ -53,7 +57,7 @@ class TimelineFragment : BaseFragment() {
         Log.d("accessToken", "get " + accessToken.toString())
 
         if (accessToken != null) {
-            (mActivity as MainActivity).marketPlaceApiViewModel.getProducts(accessToken)
+            timelineViewModel.getProducts(accessToken)
 
         }
 

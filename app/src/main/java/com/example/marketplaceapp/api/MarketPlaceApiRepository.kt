@@ -35,7 +35,7 @@ class MarketPlaceApiRepository {
         filter: String? = null,
         sort: String? = null,
         skip: Int? = null
-    ): Response<ProductBase> {
+    ): Response<ProductResponse> {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.getProducts(
             token,
             limit,

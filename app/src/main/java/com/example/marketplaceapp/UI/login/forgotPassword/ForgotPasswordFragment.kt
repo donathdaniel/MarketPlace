@@ -1,4 +1,4 @@
-package com.example.marketplaceapp.fragments.login
+package com.example.marketplaceapp.UI.login.forgotPassword
 
 import android.os.Bundle
 import android.util.Log
@@ -8,13 +8,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
+import com.example.marketplaceapp.UI.login.register.RegisterViewModel
+import com.example.marketplaceapp.UI.login.signIn.LoginFragment
 import com.example.marketplaceapp.model.ResetPasswordCredential
 import com.google.android.material.textfield.TextInputLayout
 
 class ForgotPasswordFragment : BaseFragment() {
+
+    private val forgotPasswordViewModel : ForgotPasswordViewModel by viewModels()
 
     lateinit var emailTextViewLayout: TextInputLayout
     lateinit var emailTextView: TextView
@@ -31,7 +36,7 @@ class ForgotPasswordFragment : BaseFragment() {
         emailTextView = view.findViewById(R.id.email_text_view)
         emailMeButton = view.findViewById(R.id.email_me_button)
 
-        (mActivity as MainActivity).marketPlaceApiViewModel.resetPasswordResponse.observe(
+        forgotPasswordViewModel.resetPasswordResponse.observe(
             viewLifecycleOwner,
             { response ->
                 Log.d("ResetPassword", response.errorBody().toString())
@@ -58,7 +63,7 @@ class ForgotPasswordFragment : BaseFragment() {
                     (mActivity as MainActivity).sharedPref.getString("username", "asdf1234")
                 Log.d("username", username.toString())
 
-                (mActivity as MainActivity).marketPlaceApiViewModel.resetPassword(
+                forgotPasswordViewModel.resetPassword(
                     ResetPasswordCredential(username.toString(), emailTextView.text.toString())
                 )
             }

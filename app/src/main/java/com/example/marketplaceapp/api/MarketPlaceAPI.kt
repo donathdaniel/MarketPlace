@@ -45,7 +45,7 @@ interface MarketPlaceAPI {
         @Header("sort") sort: String? = null,
         @Header("skip") skip: Int? = null
         //@Header("sort") sort : String? = "{\"creation_time\" : -1}"
-    ): Response<ProductBase>
+    ): Response<ProductResponse>
 
     @POST("products/add")
     suspend fun addProducts(

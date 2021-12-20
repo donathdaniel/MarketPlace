@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 import retrofit2.SkipCallbackExecutor
 import java.io.File
 
-data class ProductBase(
+data class ProductResponse(
 
     @SerializedName("item_count")
     val itemCount: Int,

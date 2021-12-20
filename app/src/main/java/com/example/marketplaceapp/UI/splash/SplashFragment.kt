@@ -1,9 +1,8 @@
-package com.example.marketplaceapp.fragments.splash
+package com.example.marketplaceapp.UI.splash
 
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ import android.widget.TextView
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
-import com.example.marketplaceapp.fragments.login.LoginFragment
+import com.example.marketplaceapp.UI.login.signIn.LoginFragment
 
 class SplashFragment : BaseFragment() {
 
