@@ -71,22 +71,27 @@
             app:layout_constraintStart_toEndOf="@id/product_image_view"
             app:layout_constraintTop_toBottomOf="@id/owner_name_text_view" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/order_now_button"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="-40dp"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="@color/black"
-            android:text="@string/order_now"
-            android:textAllCaps="false"
-            android:textSize="15sp"
-            app:cornerRadius="15dp"
-            app:icon="@drawable/ic_my_market"
-            app:iconSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageView
+            android:id="@+id/active_inactive_image_view"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_active_product"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="25dp"
             app:layout_constraintStart_toEndOf="@id/product_image_view"
-            app:layout_constraintTop_toBottomOf="@id/product_name_text_view" />
+            app:layout_constraintTop_toBottomOf="@id/product_name_text_view"/>
+        
+        <TextView
+            android:id="@+id/active_inactive_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Active"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="22dp"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/active_inactive_image_view"
+            app:layout_constraintTop_toBottomOf="@id/product_name_text_view"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

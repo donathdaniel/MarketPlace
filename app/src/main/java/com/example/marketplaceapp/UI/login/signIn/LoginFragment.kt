@@ -1,4 +1,4 @@
-package com.example.marketplaceapp.fragments.login
+package com.example.marketplaceapp.UI.login.signIn
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -9,14 +9,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
-import com.example.marketplaceapp.fragments.TimelineFragment
+import com.example.marketplaceapp.UI.timeline.TimelineFragment
+import com.example.marketplaceapp.UI.login.forgotPassword.ForgotPasswordFragment
+import com.example.marketplaceapp.UI.login.register.RegisterFragment
 import com.example.marketplaceapp.model.LoginCredential
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginFragment : BaseFragment() {
+
+    //private val loginViewModel : LoginViewModel = LoginViewModel(MarketPlaceApiRepository())
+    private val loginViewModel : LoginViewModel by viewModels()
 
     lateinit var logInButton: Button
     lateinit var signUpButton: Button
@@ -44,11 +50,9 @@ class LoginFragment : BaseFragment() {
         usernameTextView = view.findViewById(R.id.username_text_view)
         passwordTextView = view.findViewById(R.id.password_text_view)
 
-        (mActivity as MainActivity).marketPlaceApiViewModel.loginResponse.observe(
+        loginViewModel.loginResponse.observe(
             viewLifecycleOwner,
             { response ->
-                Log.d("Login", response.errorBody().toString())
-
                 if (response.isSuccessful) {
                     Log.d("Login", response.body().toString())
 
@@ -71,6 +75,8 @@ class LoginFragment : BaseFragment() {
                         R.id.fragment_container
                     )
                 } else {
+                    Log.d("Login", response.errorBody().toString())
+
                     Toast.makeText(context, "Login unsuccessful", Toast.LENGTH_SHORT).show()
                 }
             })
@@ -84,7 +90,7 @@ class LoginFragment : BaseFragment() {
         logInButton.setOnClickListener {
 
             if (validateInput()) {
-                (mActivity as MainActivity).marketPlaceApiViewModel.login(
+                loginViewModel.login(
                     LoginCredential(
                         usernameTextView.text.toString(),
                         passwordTextView.text.toString()

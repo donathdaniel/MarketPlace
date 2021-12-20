@@ -1,4 +1,4 @@
-package com.example.marketplaceapp.fragments.login
+package com.example.marketplaceapp.UI.login.register
 
 import android.os.Bundle
 import android.util.Log
@@ -8,13 +8,17 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
+import com.example.marketplaceapp.UI.login.signIn.LoginFragment
 import com.example.marketplaceapp.model.RegistrationCredential
 import com.google.android.material.textfield.TextInputLayout
 
 class RegisterFragment : BaseFragment() {
+
+    private val registerViewModel : RegisterViewModel by viewModels()
 
     lateinit var registerButton: Button
     lateinit var logIn: TextView
@@ -47,7 +51,7 @@ class RegisterFragment : BaseFragment() {
         emailTextView = view.findViewById(R.id.email_text_view)
         passwordTextView = view.findViewById(R.id.password_text_view)
 
-        (mActivity as MainActivity).marketPlaceApiViewModel.registerResponse.observe(
+        registerViewModel.registerResponse.observe(
             viewLifecycleOwner,
             { response ->
                 Log.d("Register", response.errorBody().toString())
@@ -78,7 +82,7 @@ class RegisterFragment : BaseFragment() {
             (mActivity as MainActivity).bottomNavigation.visibility = View.VISIBLE
 
             if (validateInput()) {
-                (mActivity as MainActivity).marketPlaceApiViewModel.registration(
+                registerViewModel.registration(
                     RegistrationCredential(
                         usernameTextView.text.toString(),
                         passwordTextView.text.toString(),

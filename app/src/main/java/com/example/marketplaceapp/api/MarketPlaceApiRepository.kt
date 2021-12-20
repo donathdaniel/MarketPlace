@@ -6,7 +6,7 @@ import retrofit2.Response
 class MarketPlaceApiRepository {
 
 
-    // User
+    // Login
     suspend fun register(registrationCredential: RegistrationCredential): Response<RegistrationResponse> {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.registration(registrationCredential)
     }
@@ -23,14 +23,32 @@ class MarketPlaceApiRepository {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.resetPassword(resetPasswordCredential)
     }
 
-    suspend fun getUserInfo(username : String) : Response<UserInfoResponse> {
+    suspend fun getUserInfo(username: String): Response<UserInfoResponse> {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.getUserInfo(username)
     }
 
 
     //Products
-    suspend fun getProducts(token: String): Response<ProductCredential> {
-        return MarketPlaceRetrofitInstance.marketPlaceAPI.getProducts(token)
+    suspend fun getProducts(
+        token: String,
+        limit: Int? = null,
+        filter: String? = null,
+        sort: String? = null,
+        skip: Int? = null
+    ): Response<ProductResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.getProducts(
+            token,
+            limit,
+            filter,
+            sort,
+            skip
+        )
+    }
+
+    suspend fun addProducts(
+        token: String, productAdd: ProductAdd
+    ): Response<ProductAddResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.addProducts(token, productAdd)
     }
 
 }

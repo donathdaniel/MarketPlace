@@ -7,11 +7,11 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.marketplaceapp.api.MarketPlaceApiRepository
-import com.example.marketplaceapp.api.MarketPlaceApiViewModel
-import com.example.marketplaceapp.fragments.ProfileFragment
-import com.example.marketplaceapp.fragments.splash.SplashFragment
-import com.example.marketplaceapp.fragments.TimelineFragment
+import com.example.marketplaceapp.UI.myMarket.MyMarketFragment
+import com.example.marketplaceapp.UI.profile.ProfileFragment
+import com.example.marketplaceapp.UI.splash.SplashFragment
+import com.example.marketplaceapp.UI.timeline.TimelineFragment
+import com.example.marketplaceapp.constants.Constant
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var sharedPref : SharedPreferences
 
-    lateinit var marketPlaceApiViewModel: MarketPlaceApiViewModel
+//    lateinit var marketPlaceApiViewModel: MarketPlaceApiViewModel
 
     lateinit var bottomNavigation: BottomNavigationView
     lateinit var topAppBar: MaterialToolbar
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        sharedPref = applicationContext.getSharedPreferences("com.example.marketplaceapp", Context.MODE_PRIVATE)
+        sharedPref = applicationContext.getSharedPreferences(Constant.sharedPreferenceName, Context.MODE_PRIVATE)
 
         bottomNavigation = findViewById(R.id.bottom_navigation)
         topAppBar = findViewById(R.id.top_app_bar)
@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         initTopBar()
 
 
-        marketPlaceApiViewModel = MarketPlaceApiViewModel(MarketPlaceApiRepository())
+//        marketPlaceApiViewModel = MarketPlaceApiViewModel(MarketPlaceApiRepository())
 
         replaceFragment(SplashFragment(), R.id.fragment_container)
 
@@ -84,8 +84,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.my_market -> {
 
-//                    if(fragment !is FeedbackFragment)
-//                        replaceFragment(FeedbackFragment(), R.id.fragment_container)
+                    if(fragment !is MyMarketFragment)
+                        replaceFragment(MyMarketFragment(), R.id.fragment_container)
                     true
                 }
                 R.id.my_fares -> {

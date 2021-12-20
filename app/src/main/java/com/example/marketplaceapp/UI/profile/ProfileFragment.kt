@@ -1,19 +1,19 @@
-package com.example.marketplaceapp.fragments
+package com.example.marketplaceapp.UI.profile
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.viewModels
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
-import com.example.marketplaceapp.adapters.TimelineAdapter
 
 class ProfileFragment : BaseFragment() {
+
+    private val profileViewModel : ProfileViewModel by viewModels()
 
     lateinit var emailTextView : TextView
     lateinit var mainUsernameTextView : TextView
@@ -35,7 +35,7 @@ class ProfileFragment : BaseFragment() {
         phoneNumberTextView = view.findViewById(R.id.phone_number_text_view)
 //        passwordTextView = view.findViewById(R.id.password_text_view)
 
-        (mActivity as MainActivity).marketPlaceApiViewModel.userInfoResponse.observe(
+        profileViewModel.userInfoResponse.observe(
             viewLifecycleOwner,
             { response ->
                 if (response.isSuccessful) {
@@ -63,7 +63,7 @@ class ProfileFragment : BaseFragment() {
         Log.d("username", username.toString())
 
         if (username != null && username!= "asdf1234") {
-            (mActivity as MainActivity).marketPlaceApiViewModel.getUserInfo(username)
+            profileViewModel.getUserInfo(username)
         }
     }
 }
