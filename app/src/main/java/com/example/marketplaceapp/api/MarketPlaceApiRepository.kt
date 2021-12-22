@@ -27,6 +27,10 @@ class MarketPlaceApiRepository {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.getUserInfo(username)
     }
 
+    suspend fun updateUserData(token: String, profileCredential: ProfileCredential): Response<ProfileResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.updateUserData(token, profileCredential)
+    }
+
 
     //Products
     suspend fun getProducts(
@@ -48,7 +52,26 @@ class MarketPlaceApiRepository {
     suspend fun addProducts(
         token: String, productAdd: ProductAdd
     ): Response<ProductAddResponse> {
-        return MarketPlaceRetrofitInstance.marketPlaceAPI.addProducts(token, productAdd)
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.addProducts(
+            token,
+            productAdd.title,
+            productAdd.description,
+            productAdd.pricePerUnit,
+            productAdd.units,
+            productAdd.isActive,
+            productAdd.rating,
+            productAdd.amountType,
+            productAdd.priceType,
+        )
+    }
+
+    suspend fun deleteProducts(
+        token: String, productId: String
+    ): Response<ProductDeleteResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.deleteProducts(
+            token,
+            productId
+        )
     }
 
 }

@@ -45,9 +45,9 @@ data class ProductAdd(
     val description: String,
 
     @SerializedName("price_per_unit")
-    val price_per_unit: Int,
+    val pricePerUnit: String,
 
-    val unit: Int,
+    val units: String,
 
     @SerializedName("is_active")
     val isActive: Boolean,
@@ -66,4 +66,14 @@ data class ProductAddResponse(
 
     @SerializedName("product_id")
     val productId : String
+)
+
+data class ProductDeleteResponse(
+    val message : String,
+
+    @SerializedName("product_id")
+    val productId : String,
+
+    @SerializedName("deletion_time")
+    val deletionTime : String
 )

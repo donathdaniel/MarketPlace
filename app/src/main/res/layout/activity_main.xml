@@ -24,10 +24,11 @@
             app:logo="@drawable/ic_bazaar_logo_coloured"/>
 
         <SearchView
-            android:id="@+id/search_button"
+            android:id="@+id/search_app_bar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:visibility="gone"/>
+            android:background="@color/colorHintText"
+            android:visibility="gone" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

@@ -50,4 +50,14 @@
     <string name="active">Active</string>
     <string name="kg">KG</string>
     <string name="ron">RON</string>
+    <string name="product_search_hint">Search between products</string>
+    <string name="publish">Publish</string>
+    <string name="amount">Amount</string>
+    <string name="comments">Comments</string>
+    <string name="my_order">My Order</string>
+    <string name="cancel">Cancel</string>
+    <string name="send_my_order">Send my order</string>
+    <string name="L">L</string>
+    <string name="revolut">Place your order and track it\'s availability before you send Revolut payment!</string>
+    <string name="delete">Are you sure that you want to delete this product?</string>
 </resources>

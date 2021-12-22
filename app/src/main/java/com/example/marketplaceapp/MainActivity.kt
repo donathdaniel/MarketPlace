@@ -1,28 +1,25 @@
 package com.example.marketplaceapp
 
-import android.content.Context
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
-import com.example.marketplaceapp.UI.myMarket.MyMarketFragment
-import com.example.marketplaceapp.UI.profile.ProfileFragment
-import com.example.marketplaceapp.UI.splash.SplashFragment
-import com.example.marketplaceapp.UI.timeline.TimelineFragment
-import com.example.marketplaceapp.constants.Constant
+import com.example.marketplaceapp.ui.login.signIn.LoginFragment
+import com.example.marketplaceapp.ui.myMarket.MyMarketFragment
+import com.example.marketplaceapp.ui.profile.ProfileFragment
+import com.example.marketplaceapp.ui.splash.SplashFragment
+import com.example.marketplaceapp.ui.timeline.TimelineFragment
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var sharedPref : SharedPreferences
-
-//    lateinit var marketPlaceApiViewModel: MarketPlaceApiViewModel
-
     lateinit var bottomNavigation: BottomNavigationView
     lateinit var topAppBar: MaterialToolbar
+    lateinit var searchView : SearchView
+
     lateinit var profileIcon: MenuItem
     lateinit var filterIcon: MenuItem
     lateinit var searchIcon: MenuItem
@@ -31,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        sharedPref = applicationContext.getSharedPreferences(Constant.sharedPreferenceName, Context.MODE_PRIVATE)
 
         bottomNavigation = findViewById(R.id.bottom_navigation)
         topAppBar = findViewById(R.id.top_app_bar)
+        searchView = findViewById(R.id.search_app_bar)
 
         bottomNavigation.visibility = View.GONE
         topAppBar.visibility = View.GONE
@@ -48,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
 //        marketPlaceApiViewModel = MarketPlaceApiViewModel(MarketPlaceApiRepository())
 
-        replaceFragment(SplashFragment(), R.id.fragment_container)
+        replaceFragment(LoginFragment(), R.id.fragment_container)
 
 //        val accessToken: String? = sharedPref.getString("accessToken", "asdf1234")
 //        Log.d("accessToken", "get " + accessToken.toString())

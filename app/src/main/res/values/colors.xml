@@ -11,7 +11,11 @@
 
     <color name="colorPrimary">#00b3b3</color>
     <color name="colorHintText">#757575</color>
+    <color name="colorHintText2">#cccccc</color>
     <color name="colorAppBlack">#1b1b1b</color>
     <color name="colorAppWhite">#EEEEEE</color>
+
+    <color name="colorUploadImageBackground">#00B5C0</color>
+
 
 </resources>

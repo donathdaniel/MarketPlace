@@ -1,5 +1,6 @@
 package com.example.marketplaceapp.api
 
+import com.example.marketplaceapp.utils.Constant
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.OkHttpClient
@@ -7,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 
 object MarketPlaceRetrofitInstance {
-    private const val BASE_URL = "https://pure-gorge-51703.herokuapp.com/"
+    private const val BASE_URL = Constant.marketPlaceAPIBaseUrl
 
     private val retrofit by lazy {
         val httpClient = OkHttpClient.Builder()

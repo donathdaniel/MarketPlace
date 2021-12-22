@@ -7,7 +7,7 @@
     android:background="@color/colorAppWhite"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".UI.myMarket.MyMarketFragment">
+    tools:context=".ui.myMarket.MyMarketFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

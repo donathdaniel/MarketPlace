@@ -4,20 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UI.myMarket.CreateFareFragment">
+    tools:context=".ui.myMarket.CreateFareFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/product_placeholder_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:background="@color/colorUploadImageBackground"
+            android:src="@drawable/ic_product_placeholder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/toggle_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/product_placeholder_image_view"
             app:selectionRequired="true"
             app:singleSelection="true">
 
@@ -79,11 +89,13 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            app:suffixText="@string/ron"
             android:hint="@string/price_amount"
             android:textColorHint="@color/colorHintText"
+            app:endIconCheckable="true"
             app:helperText="@string/amount_helper_text"
-            app:layout_constraintTop_toBottomOf="@+id/title_text_view_layout">
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view_layout"
+            app:suffixText="@string/ron">
+
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/price_amount_text_view"
@@ -101,11 +113,11 @@
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="15dp"
-            app:suffixText="@string/kg"
             android:hint="@string/available_amount"
             android:textColorHint="@color/colorHintText"
             app:helperText="@string/amount_helper_text"
-            app:layout_constraintTop_toBottomOf="@+id/price_amount_text_view_layout">
+            app:layout_constraintTop_toBottomOf="@+id/price_amount_text_view_layout"
+            app:suffixText="@string/kg">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/available_amount_text_view"
@@ -233,10 +245,11 @@
             android:id="@+id/preview_my_fair_button"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="380dp"
-            android:layout_height="36dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/black"
             android:text="@string/preview_my_fair"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -247,10 +260,11 @@
             android:id="@+id/launch_my_fair_button"
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="380dp"
-            android:layout_height="36dp"
+            android:layout_height="40dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@color/black"
             android:text="@string/launch_my_fair"
+            android:textAllCaps="false"
             android:textColor="@color/white"
             app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
