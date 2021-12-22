@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.BazaarSharedPreference
-import com.example.marketplaceapp.BazaarSharedPreference.getToken
-import com.example.marketplaceapp.BazaarSharedPreference.getUsername
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
 import com.example.marketplaceapp.interfaces.OnMyMarketItemClickListener
 import com.example.marketplaceapp.model.Product
 import com.example.marketplaceapp.ui.myMarket.adapter.MyMarketAdapter
+import com.example.marketplaceapp.utils.getToken
+import com.example.marketplaceapp.utils.getUsername
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 

@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="20dp"
+            app:checkedButton="@id/active_toggle_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/product_placeholder_image_view"
             app:selectionRequired="true"
@@ -88,17 +89,36 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="95dp"
             android:hint="@string/price_amount"
             android:textColorHint="@color/colorHintText"
             app:endIconCheckable="true"
             app:helperText="@string/amount_helper_text"
-            app:layout_constraintTop_toBottomOf="@+id/title_text_view_layout"
-            app:suffixText="@string/ron">
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view_layout">
 
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/price_amount_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/price_type_text_view_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:hint="@string/type"
+            app:helperText="@string/type_helper_text"
+            app:layout_constraintStart_toEndOf="@id/price_amount_text_view_layout"
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/price_type_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black" />
@@ -112,15 +132,37 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginEnd="95dp"
             android:hint="@string/available_amount"
             android:textColorHint="@color/colorHintText"
             app:helperText="@string/amount_helper_text"
-            app:layout_constraintTop_toBottomOf="@+id/price_amount_text_view_layout"
-            app:suffixText="@string/kg">
+            app:layout_constraintEnd_toStartOf="@id/price_type_text_view_layout"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_amount_text_view_layout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/available_amount_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/amount_type_text_view_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:hint="@string/type"
+            app:helperText="@string/type_helper_text"
+            app:layout_constraintStart_toEndOf="@id/available_amount_text_view_layout"
+            app:layout_constraintTop_toBottomOf="@+id/price_amount_text_view_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/amount_type_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black" />

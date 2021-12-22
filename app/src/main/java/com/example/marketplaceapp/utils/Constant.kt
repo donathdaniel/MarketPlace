@@ -18,6 +18,7 @@ object Constant {
     const val priceType: String ="priceType"
     const val pricePerUnit: String = "pricePerUnit"
     const val title: String ="title"
+    const val productId: String ="productId"
 
 //    Endpoints
 

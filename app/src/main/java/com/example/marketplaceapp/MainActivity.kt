@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initTopBar(){
         profileIcon.setOnMenuItemClickListener {
-            replaceFragment(ProfileFragment(), R.id.fragment_container)
+            replaceFragment(ProfileFragment(), R.id.fragment_container, true)
             true
         }
         filterIcon.setOnMenuItemClickListener {

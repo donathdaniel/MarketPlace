@@ -8,18 +8,23 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.BazaarSharedPreference
-import com.example.marketplaceapp.BazaarSharedPreference.getToken
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
-import com.example.marketplaceapp.utils.Constant
 import com.example.marketplaceapp.interfaces.OnTimelineItemClickListener
+import com.example.marketplaceapp.utils.Constant
 import com.example.marketplaceapp.ui.timeline.adapter.TimelineAdapter
 import com.example.marketplaceapp.model.Product
+import com.example.marketplaceapp.ui.details.DetailsFragment
+import com.example.marketplaceapp.ui.login.signIn.LoginFragment
+import com.example.marketplaceapp.ui.profile.ProfileViewByOthersFragment
+import com.example.marketplaceapp.utils.getToken
+import com.example.marketplaceapp.utils.getUsername
 import java.util.*
 
 
@@ -47,7 +52,6 @@ class TimelineFragment : BaseFragment(), OnTimelineItemClickListener {
                     progressBar.visibility = View.GONE
 
                     Log.d("getProducts", response.body().toString())
-//                    timelineList = response.body()?.products!!
                     timelineList = response.body()?.products as MutableList<Product>
 
                     timelineAdapter = TimelineAdapter(timelineList, this)
@@ -61,8 +65,10 @@ class TimelineFragment : BaseFragment(), OnTimelineItemClickListener {
                 }
             })
 
-        (mActivity as MainActivity).topAppBar.visibility = View.VISIBLE
-        (mActivity as MainActivity).bottomNavigation.visibility = View.VISIBLE
+        (mActivity as MainActivity).topAppBar.isVisible = true
+        (mActivity as MainActivity).bottomNavigation.isVisible = true
+        (mActivity as MainActivity).searchIcon.isVisible = true
+        (mActivity as MainActivity).filterIcon.isVisible = true
         recyclerview = view.findViewById(R.id.recycler_view)
         progressBar = view.findViewById(R.id.progress_bar)
 
@@ -119,18 +125,47 @@ class TimelineFragment : BaseFragment(), OnTimelineItemClickListener {
         timelineAdapter.filterList(filteredList)
     }
 
-    override fun orderNow(position: Int) {
+    override fun orderNow(product: Product) {
         val bundle = Bundle()
-        bundle.putString(Constant.username, timelineList[position].username)
-        bundle.putString(Constant.title, timelineList[position].title)
-        bundle.putString(Constant.pricePerUnit, timelineList[position].pricePerUnit)
-        bundle.putString(Constant.priceType, timelineList[position].priceType)
-        bundle.putString(Constant.amountType, timelineList[position].amountType)
-        bundle.putBoolean(Constant.isActive, timelineList[position].isActive)
-        bundle.putString(Constant.units, timelineList[position].units)
+        bundle.putString(Constant.username, product.username)
+        bundle.putString(Constant.title, product.title)
+        bundle.putString(Constant.pricePerUnit, product.pricePerUnit)
+        bundle.putString(Constant.priceType, product.priceType)
+        bundle.putString(Constant.amountType, product.amountType)
+        bundle.putBoolean(Constant.isActive, product.isActive)
+        bundle.putString(Constant.units, product.units)
         val fragment = MakeOrderDialogFragment()
         fragment.arguments = bundle
 
         fragment.show(childFragmentManager,"something")
     }
+
+    override fun onProfile(product: Product) {
+        val bundle = Bundle()
+        bundle.putString(Constant.username, product.username)
+        val fragment = ProfileViewByOthersFragment()
+        fragment.arguments = bundle
+
+        (mActivity as MainActivity).replaceFragment(
+            fragment,
+            R.id.fragment_container,
+            true
+        )
+    }
+
+    override fun onDetails(product: Product) {
+
+        val bundle = Bundle()
+        bundle.putString(Constant.productId, product.productId)
+        val fragment = DetailsFragment()
+        fragment.arguments = bundle
+
+        (mActivity as MainActivity).replaceFragment(
+            fragment,
+            R.id.fragment_container,
+            true
+        )
+
+    }
+
 }

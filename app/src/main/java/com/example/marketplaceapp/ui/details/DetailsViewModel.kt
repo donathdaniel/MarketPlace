@@ -1,4 +1,4 @@
-package com.example.marketplaceapp.ui.timeline
+package com.example.marketplaceapp.ui.details
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,7 +9,7 @@ import com.example.marketplaceapp.model.ProductResponse
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class TimelineViewModel : ViewModel() {
+class DetailsViewModel: ViewModel() {
 
     private val repository: MarketPlaceApiRepository = MarketPlaceApiRepository()
     private var _getProductResponse: MutableLiveData<Response<ProductResponse>> = MutableLiveData()
@@ -19,7 +19,7 @@ class TimelineViewModel : ViewModel() {
         token: String,
         limit: Int? = null,
         filter: String? = null,
-        sort: String? = "{\"creation_time\" : -1}",
+        sort: String? = null,
         skip: Int? = null
     ) {
         viewModelScope.launch {

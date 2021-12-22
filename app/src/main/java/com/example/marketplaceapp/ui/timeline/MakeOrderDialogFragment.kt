@@ -13,6 +13,7 @@ import androidx.fragment.app.DialogFragment
 import com.bumptech.glide.Glide
 import com.example.marketplaceapp.R
 import com.example.marketplaceapp.utils.Constant
+import com.example.marketplaceapp.utils.deleteQuotes
 import com.google.android.material.textfield.TextInputLayout
 
 
@@ -58,11 +59,11 @@ class MakeOrderDialogFragment : DialogFragment() {
             .circleCrop()
             .into(ownerImageView)
 
-        ownerNameTextView.text = arguments?.getString(Constant.username)
-        productNameTextView.text = arguments?.getString(Constant.title)
+        ownerNameTextView.text = arguments?.getString(Constant.username)?.deleteQuotes()
+        productNameTextView.text = arguments?.getString(Constant.title)?.deleteQuotes()
         priceTextView.text =
-            arguments?.getString(Constant.pricePerUnit) + " " + arguments?.getString(Constant.priceType) +
-                    "/" + arguments?.getString(Constant.amountType)
+            (arguments?.getString(Constant.pricePerUnit) + " " + arguments?.getString(Constant.priceType) +
+                    "/" + arguments?.getString(Constant.amountType)).deleteQuotes()
 
 
         val activeInactiveColor : Int
@@ -93,12 +94,11 @@ class MakeOrderDialogFragment : DialogFragment() {
             sendMyOrderButton.setBackgroundColor(ContextCompat.getColor(context!!, R.color.colorHintText))
         }
         activeInactiveTextView.setTextColor(ContextCompat.getColor(context!!, activeInactiveColor))
-        activeInactiveTextView.text = activeInactiveText
+        activeInactiveTextView.text = activeInactiveText.deleteQuotes()
 
-        productNameTextView.text = arguments?.getString(Constant.title)
-        productNameTextView.text = arguments?.getString(Constant.title)
+        productNameTextView.text = arguments?.getString(Constant.title)?.deleteQuotes()
 
-        amountTextViewLayout.suffixText = arguments?.getString(Constant.amountType)
+        amountTextViewLayout.suffixText = arguments?.getString(Constant.amountType)?.deleteQuotes()
 
         cancelButton.setOnClickListener {
             this.dismiss()

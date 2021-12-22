@@ -9,6 +9,7 @@
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/drawable/ic_active_product.xml" value="0.3828125" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/drawable/ic_avatar__1_.xml" value="0.3828125" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/drawable/ic_bazaar_logo_coloured.xml" value="0.3828125" />
+        <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/drawable/ic_edit.xml" value="0.3611111111111111" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/drawable/ic_group_2.xml" value="0.3671875" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/drawable/ic_my_market.xml" value="0.3671875" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/drawable/ic_profile.xml" value="0.3671875" />
@@ -21,11 +22,13 @@
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout-v28/fragment_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_create_fare.xml" value="0.33" />
+        <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_details.xml" value="0.36666666666666664" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_forgot_password.xml" value="0.25" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_login.xml" value="0.25" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_make_order_dialog.xml" value="0.4940239043824701" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_my_market.xml" value="0.36666666666666664" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_profile.xml" value="0.2682291666666667" />
+        <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_profile_view_by_others.xml" value="0.36666666666666664" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_register.xml" value="0.36666666666666664" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_splash.xml" value="0.328804347826087" />
         <entry key="..\:/Daniel/3.year/first/Android_programozas/projekt/MarketPlace/app/src/main/res/layout/fragment_timeline.xml" value="0.36666666666666664" />

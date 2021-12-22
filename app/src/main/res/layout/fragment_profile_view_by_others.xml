@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:hint="@string/email"
             android:paddingLeft="20dp"
@@ -84,6 +84,9 @@
                 android:id="@+id/user_name_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
                 android:textColor="@color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -108,62 +111,29 @@
                 android:id="@+id/phone_number_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_text_view_layout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginEnd="30dp"
-            android:hint="@string/password"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:textColorHint="@color/colorHintText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/phone_number_text_view_layout">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:cursorVisible="false"
+                android:focusable="false"
                 android:textColor="@color/white" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/publish_button"
-            style="@style/Widget.MaterialComponents.Button"
+            android:id="@+id/sign_up_button"
+            style="?attr/materialButtonOutlinedStyle"
             android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_height="42dp"
             android:layout_marginTop="20dp"
-            android:text="@string/publish"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
+            android:layout_marginBottom="40dp"
+            android:text="@string/send_chat_message"
+            android:textColor="@color/white"
             app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/password_text_view_layout" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/log_out_button"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="20dp"
-            android:text="@string/log_out"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            app:cornerRadius="15dp"
+            app:layout_constraintTop_toBottomOf="@id/phone_number_text_view_layout"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/publish_button" />
+            app:strokeColor="@color/white" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
