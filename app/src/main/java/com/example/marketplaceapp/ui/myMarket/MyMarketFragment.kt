@@ -176,7 +176,4 @@ class MyMarketFragment : BaseFragment(), OnMyMarketItemClickListener {
         )
     }
 
-    override fun onAcivateOrInactivate(product: Product) {
-        TODO("Not yet implemented")
-    }
 }

@@ -18,6 +18,4 @@ interface OnMyMarketItemClickListener {
     fun onProfile(product: Product)
 
     fun onDetails(product: Product)
-
-    fun onAcivateOrInactivate(product: Product)
 }

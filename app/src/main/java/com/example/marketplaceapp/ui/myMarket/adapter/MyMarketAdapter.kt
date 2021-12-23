@@ -43,14 +43,6 @@ class MyMarketAdapter(
                 clickAt.onProfile(myMarketList[adapterPosition])
             }
 
-            activeInactiveImageView.setOnClickListener {
-                clickAt.onAcivateOrInactivate(myMarketList[adapterPosition])
-            }
-
-            activeInactiveTextView.setOnClickListener {
-                clickAt.onAcivateOrInactivate(myMarketList[adapterPosition])
-            }
-
             itemView.setOnClickListener {
                 clickAt.onDetails(myMarketList[adapterPosition])
             }
