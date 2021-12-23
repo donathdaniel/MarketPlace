@@ -14,7 +14,7 @@ import retrofit2.Response
 class ProfileViewModel: ViewModel() {
 
     private val repository : MarketPlaceApiRepository = MarketPlaceApiRepository()
-    private val _userInfoResponse: MutableLiveData<Response<UserInfoResponse>> = MutableLiveData()
+    private var _userInfoResponse: MutableLiveData<Response<UserInfoResponse>> = MutableLiveData()
     val userInfoResponse: LiveData<Response<UserInfoResponse>> = _userInfoResponse
 
     private val _profileResponse: MutableLiveData<Response<ProfileResponse>> = MutableLiveData()

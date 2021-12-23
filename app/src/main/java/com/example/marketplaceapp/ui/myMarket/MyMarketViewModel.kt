@@ -18,10 +18,10 @@ class MyMarketViewModel: ViewModel() {
     var getProductResponse: LiveData<Response<ProductResponse>> = _getProductResponse
 
     private var _addProductResponse: MutableLiveData<Response<ProductAddResponse>> = MutableLiveData()
-    var addProductResponse: LiveData<Response<ProductAddResponse>> = _addProductResponse
+    val addProductResponse: LiveData<Response<ProductAddResponse>> = _addProductResponse
 
     private var _deleteProductResponse: MutableLiveData<Response<ProductDeleteResponse>> = MutableLiveData()
-    var deleteProductResponse: LiveData<Response<ProductDeleteResponse>> = _deleteProductResponse
+    val deleteProductResponse: LiveData<Response<ProductDeleteResponse>> = _deleteProductResponse
 
     fun getProducts(
         token: String,

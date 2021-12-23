@@ -77,3 +77,47 @@ data class ProductDeleteResponse(
     @SerializedName("deletion_time")
     val deletionTime : String
 )
+
+data class ProductUpdate(
+    @SerializedName("price_per_unit")
+    val pricePerUnit: String? = null,
+
+    @SerializedName("is_active")
+    val isActive: Boolean? = null,
+    val title: String? = null,
+    val rating: String? = null,
+
+    @SerializedName("amount_type")
+    val amountType: String? = null,
+
+    @SerializedName("price_type")
+    val priceType: String? = null,
+)
+
+data class ProductUpdateResponse(
+    val rating : String,
+
+    @SerializedName("amount_type")
+    val amountType: String,
+
+    @SerializedName("price_type")
+    val priceType: String,
+
+    @SerializedName("product_id")
+    val productId: String,
+
+    val username: String,
+
+    @SerializedName("is_active")
+    val isActive: Boolean,
+
+    @SerializedName("price_per_unit")
+    val pricePerUnit: String,
+
+    val units: String,
+    val description: String,
+    val title: String,
+
+    @SerializedName("creation_time")
+    val creationTime: Long
+)

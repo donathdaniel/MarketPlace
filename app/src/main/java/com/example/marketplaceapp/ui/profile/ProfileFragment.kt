@@ -10,15 +10,11 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.BazaarSharedPreference
-import com.example.marketplaceapp.BazaarSharedPreference.getToken
-import com.example.marketplaceapp.BazaarSharedPreference.getUsername
-import com.example.marketplaceapp.BazaarSharedPreference.putToken
-import com.example.marketplaceapp.BazaarSharedPreference.putUsername
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
 import com.example.marketplaceapp.ui.login.signIn.LoginFragment
-import com.example.marketplaceapp.utils.Constant
 import com.example.marketplaceapp.model.ProfileCredential
+import com.example.marketplaceapp.utils.*
 import com.google.android.material.button.MaterialButton
 
 class ProfileFragment : BaseFragment() {
@@ -30,7 +26,7 @@ class ProfileFragment : BaseFragment() {
     lateinit var usernameTextView: TextView
     lateinit var phoneNumberTextView: TextView
     lateinit var publishButton: MaterialButton
-    lateinit var logInButton: MaterialButton
+    lateinit var logOutButton: MaterialButton
 //    lateinit var passwordTextView : TextView
 
     override fun onCreateView(
@@ -47,7 +43,7 @@ class ProfileFragment : BaseFragment() {
         phoneNumberTextView = view.findViewById(R.id.phone_number_text_view)
 
         publishButton = view.findViewById(R.id.publish_button)
-        logInButton = view.findViewById(R.id.log_in_button)
+        logOutButton = view.findViewById(R.id.log_out_button)
 //        passwordTextView = view.findViewById(R.id.password_text_view)
 
         (mActivity as MainActivity).searchIcon.isVisible = false
@@ -95,7 +91,7 @@ class ProfileFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val username: String = BazaarSharedPreference.sharedPref.getUsername()
-        Log.d("username", username.toString())
+        Log.d("username", username)
 
         if (username != "") {
             profileViewModel.getUserInfo(username)
@@ -113,7 +109,7 @@ class ProfileFragment : BaseFragment() {
             )
         }
 
-        logInButton.setOnClickListener {
+        logOutButton.setOnClickListener {
             BazaarSharedPreference.sharedPref.putToken("")
 
             (mActivity as MainActivity).replaceFragment(

@@ -1,13 +1,23 @@
 package com.example.marketplaceapp.interfaces
 
+import com.example.marketplaceapp.model.Product
+
 interface OnTimelineItemClickListener {
 
-    fun orderNow(position: Int)
+    fun orderNow(product: Product)
+
+    fun onProfile(product: Product)
+
+    fun onDetails(product: Product)
 }
 
 interface OnMyMarketItemClickListener {
 
-    fun onDelete(position: Int)
+    fun onDelete(product: Product)
 
-    fun onDetails(position: Int)
+    fun onProfile(product: Product)
+
+    fun onDetails(product: Product)
+
+    fun onAcivateOrInactivate(product: Product)
 }

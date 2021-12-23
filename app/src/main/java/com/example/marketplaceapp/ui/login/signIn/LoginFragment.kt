@@ -12,8 +12,6 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.BazaarSharedPreference
-import com.example.marketplaceapp.BazaarSharedPreference.putToken
-import com.example.marketplaceapp.BazaarSharedPreference.putUsername
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
 import com.example.marketplaceapp.ui.timeline.TimelineFragment
@@ -21,6 +19,8 @@ import com.example.marketplaceapp.ui.login.forgotPassword.ForgotPasswordFragment
 import com.example.marketplaceapp.ui.login.register.RegisterFragment
 import com.example.marketplaceapp.utils.Constant
 import com.example.marketplaceapp.model.LoginCredential
+import com.example.marketplaceapp.utils.putToken
+import com.example.marketplaceapp.utils.putUsername
 import com.google.android.material.textfield.TextInputLayout
 
 class LoginFragment : BaseFragment() {

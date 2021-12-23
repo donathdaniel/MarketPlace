@@ -11,11 +11,11 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.BazaarSharedPreference
-import com.example.marketplaceapp.BazaarSharedPreference.getUsername
 import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
 import com.example.marketplaceapp.ui.login.signIn.LoginFragment
 import com.example.marketplaceapp.model.ResetPasswordCredential
+import com.example.marketplaceapp.utils.getUsername
 import com.google.android.material.textfield.TextInputLayout
 
 class ForgotPasswordFragment : BaseFragment() {

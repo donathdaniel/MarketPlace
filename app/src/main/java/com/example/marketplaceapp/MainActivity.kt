@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.View
 import android.widget.SearchView
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import com.example.marketplaceapp.ui.login.signIn.LoginFragment
+import com.example.marketplaceapp.ui.myFares.MyFaresFragment
 import com.example.marketplaceapp.ui.myMarket.MyMarketFragment
 import com.example.marketplaceapp.ui.profile.ProfileFragment
 import com.example.marketplaceapp.ui.splash.SplashFragment
@@ -24,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var filterIcon: MenuItem
     lateinit var searchIcon: MenuItem
 
+    lateinit var spinnerFilter: Spinner
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -40,22 +44,26 @@ class MainActivity : AppCompatActivity() {
         profileIcon = topAppBar.menu.findItem(R.id.profile_menu_item)
         filterIcon = topAppBar.menu.findItem(R.id.filter_menu_item)
         searchIcon = topAppBar.menu.findItem(R.id.search_menu_item)
+        spinnerFilter = findViewById(R.id.spinner_filter)
         initTopBar()
 
 
-//        marketPlaceApiViewModel = MarketPlaceApiViewModel(MarketPlaceApiRepository())
+        replaceFragment(SplashFragment(), R.id.fragment_container)
 
-        replaceFragment(LoginFragment(), R.id.fragment_container)
+        searchIcon.setOnMenuItemClickListener{
+            searchView.visibility = View.VISIBLE
+            topAppBar.visibility = View.GONE
+            searchView.isIconified = false
 
-//        val accessToken: String? = sharedPref.getString("accessToken", "asdf1234")
-//        Log.d("accessToken", "get " + accessToken.toString())
-//
-//        if(accessToken == null || accessToken == "asdf1234") {
-//
-//        }
-//        else{
-//            replaceFragment(TimelineFragment(), R.id.fragment_container)
-//        }
+            return@setOnMenuItemClickListener true
+        }
+
+        searchView.setOnCloseListener {
+            searchView.visibility = View.GONE
+            topAppBar.visibility = View.VISIBLE
+            true
+        }
+
     }
 
     fun replaceFragment(fragment: Fragment, containerId: Int, addToBackStack:Boolean = false, withAnimation:Boolean = false){
@@ -87,8 +95,8 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.my_fares -> {
 
-//                    if(fragment !is MyAppointmentsFragment)
-//                        replaceFragment(MyAppointmentsFragment(), R.id.fragment_container)
+                    if(fragment !is MyFaresFragment)
+                        replaceFragment(MyFaresFragment(), R.id.fragment_container)
                     true
                 }
                 else -> false
@@ -98,7 +106,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initTopBar(){
         profileIcon.setOnMenuItemClickListener {
-            replaceFragment(ProfileFragment(), R.id.fragment_container)
+            replaceFragment(ProfileFragment(), R.id.fragment_container, true)
             true
         }
         filterIcon.setOnMenuItemClickListener {
