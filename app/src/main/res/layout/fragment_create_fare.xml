@@ -101,6 +101,7 @@
                 android:id="@+id/price_amount_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -145,6 +146,7 @@
                 android:id="@+id/available_amount_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="phone"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>

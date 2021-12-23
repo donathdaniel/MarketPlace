@@ -27,7 +27,10 @@ class MarketPlaceApiRepository {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.getUserInfo(username)
     }
 
-    suspend fun updateUserData(token: String, profileCredential: ProfileCredential): Response<ProfileResponse> {
+    suspend fun updateUserData(
+        token: String,
+        profileCredential: ProfileCredential
+    ): Response<ProfileResponse> {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.updateUserData(token, profileCredential)
     }
 
@@ -47,6 +50,12 @@ class MarketPlaceApiRepository {
             sort,
             skip
         )
+    }
+
+    suspend fun getProducts2(
+        headers: Map<String, String>
+    ): Response<ProductResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.getProducts2(headers)
     }
 
     suspend fun addProducts(
@@ -71,6 +80,35 @@ class MarketPlaceApiRepository {
         return MarketPlaceRetrofitInstance.marketPlaceAPI.deleteProducts(
             token,
             productId
+        )
+    }
+
+    suspend fun updateProducts(
+        token: String, productId: String, productUpdate: ProductUpdate
+    ): Response<ProductUpdateResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.updateProducts(
+            productId,
+            token,
+            productUpdate
+        )
+    }
+
+    suspend fun getOrders(
+        headers: Map<String, String>
+    ): Response<OrdersResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.getOrders(headers)
+    }
+
+    suspend fun addOrder(
+        token: String, orderAdd: OrderAdd
+    ): Response<OrderAddResponse> {
+        return MarketPlaceRetrofitInstance.marketPlaceAPI.addOrder(
+            token,
+            orderAdd.title,
+            orderAdd.description,
+            orderAdd.pricePerUnit,
+            orderAdd.units,
+            orderAdd.ownerUsername
         )
     }
 

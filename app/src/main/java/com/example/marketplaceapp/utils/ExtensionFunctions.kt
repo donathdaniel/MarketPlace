@@ -5,6 +5,10 @@ import com.example.marketplaceapp.BazaarSharedPreference
 
 fun String.deleteQuotes() = this.replace("\"", "")
 
+fun String.deleteSlash() = this.replace("\\", "")
+
+fun String.deleteSlash2() = this.replace("/", "")
+
 fun SharedPreferences.putToken(value: String) {
     BazaarSharedPreference.sharedPref.edit()?.putString(Constant.accessToken, value)?.apply()
 }

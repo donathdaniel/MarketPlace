@@ -14,10 +14,14 @@ import com.example.marketplaceapp.model.Product
 import com.example.marketplaceapp.utils.deleteQuotes
 import com.google.android.material.button.MaterialButton
 
-class TimelineAdapter(private var productList: MutableList<Product>, private val listener : OnTimelineItemClickListener) :
+class TimelineAdapter(
+    private var productList: MutableList<Product>,
+    private val listener: OnTimelineItemClickListener
+) :
     RecyclerView.Adapter<TimelineAdapter.ViewHolder>() {
 
-    inner class ViewHolder(ItemView: View, clickAtOrderNow: OnTimelineItemClickListener) : RecyclerView.ViewHolder(ItemView) {
+    inner class ViewHolder(ItemView: View, clickAt: OnTimelineItemClickListener) :
+        RecyclerView.ViewHolder(ItemView) {
         val productImageView: ImageView = itemView.findViewById(R.id.product_image_view)
         val priceTextView: TextView = itemView.findViewById(R.id.price_text_view)
         val ownerNameTextView: TextView = itemView.findViewById(R.id.owner_name_text_view)
@@ -26,40 +30,45 @@ class TimelineAdapter(private var productList: MutableList<Product>, private val
 
         private val orderNowButton: MaterialButton = itemView.findViewById(R.id.order_now_button)
 
-        init{
-            orderNowButton.setOnClickListener{
-                clickAtOrderNow.orderNow(productList[adapterPosition])
+        init {
+            orderNowButton.setOnClickListener {
+                clickAt.orderNow(productList[adapterPosition])
             }
 
             ownerImageView.setOnClickListener {
-                clickAtOrderNow.onProfile(productList[adapterPosition])
+                clickAt.onProfile(productList[adapterPosition])
+            }
+
+            ownerNameTextView.setOnClickListener {
+                clickAt.onProfile(productList[adapterPosition])
             }
 
             ItemView.setOnClickListener {
-                clickAtOrderNow.onDetails(productList[adapterPosition])
+                clickAt.onDetails(productList[adapterPosition])
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        return ViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.timeline_recyclerview_element, parent, false), listener)
+        return ViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.timeline_recyclerview_element, parent, false), listener
+        )
     }
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val itemsViewModel = productList[position]
 
-        if(position%2 == 0) {
+        if (position % 2 == 0) {
             Glide.with(holder.itemView.context)
                 .load(R.drawable.palinka)
                 .placeholder(R.drawable.palinka)
                 .error(R.drawable.palinka)
                 .circleCrop()
                 .into(holder.productImageView)
-        }
-        else{
+        } else {
             Glide.with(holder.itemView.context)
                 .load(R.drawable.palinka2)
                 .placeholder(R.drawable.palinka2)

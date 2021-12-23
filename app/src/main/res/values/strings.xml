@@ -63,4 +63,18 @@
     <string name="send_chat_message">Send a chat message</string>
     <string name="type">Type</string>
     <string name="type_helper_text">0/3</string>
+    <string name="ongoing_sales">Ongoing Sales</string>
+    <string name="ongoing_orders">Ongoing Orders</string>
+    <string name="total_items">Total items</string>
+    <string name="price_item">Price/item</string>
+    <string name="sold_items">Sold items</string>
+    <string name="review">Review</string>
+    <string name="order_done">Please track your order under Ongoing Orders. Thank you!</string>
+
+
+    <string-array name="filterBy">
+        <item>Time</item>
+        <item>Product</item>
+        <item>Seller</item>
+    </string-array>
 </resources>

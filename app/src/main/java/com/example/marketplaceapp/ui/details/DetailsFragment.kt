@@ -14,9 +14,13 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.marketplaceapp.BaseFragment
 import com.example.marketplaceapp.BazaarSharedPreference
+import com.example.marketplaceapp.MainActivity
 import com.example.marketplaceapp.R
 import com.example.marketplaceapp.model.Product
+import com.example.marketplaceapp.ui.myMarket.CreateFareFragment
+import com.example.marketplaceapp.ui.timeline.MakeOrderDialogFragment
 import com.example.marketplaceapp.ui.timeline.TimelineViewModel
 import com.example.marketplaceapp.ui.timeline.adapter.TimelineAdapter
 import com.example.marketplaceapp.utils.Constant
@@ -24,7 +28,7 @@ import com.example.marketplaceapp.utils.deleteQuotes
 import com.example.marketplaceapp.utils.getToken
 import com.example.marketplaceapp.utils.getUsername
 
-class DetailsFragment : Fragment() {
+class DetailsFragment : BaseFragment() {
 
     private val detailsViewModel: DetailsViewModel by viewModels()
 
@@ -128,10 +132,12 @@ class DetailsFragment : Fragment() {
             })
 
         val accessToken: String = BazaarSharedPreference.sharedPref.getToken()
-        Log.d("accessToken", "get $accessToken")
 
         val filter = "{\"product_id\": \"" + arguments?.getString(Constant.productId) + "\"}"
         detailsViewModel.getProducts(accessToken, null, filter)
+
+        editImageView.setOnClickListener {
+        }
 
         return view
     }

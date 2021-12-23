@@ -14,7 +14,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/product_placeholder_image_view"
@@ -128,5 +128,117 @@
         android:text="Palinka din prune alese, facuta cu drag dupa o reteta de familie. S-au folosit cele mai bune si frumoase prune, culese din livezi din Transilvania"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/price_text_view" />
+
+    <TextView
+        android:id="@+id/total_items_circle_text_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/details_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="2 L"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_description_text_view" />
+
+    <TextView
+        android:id="@+id/price_item_circle_text_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/details_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="45 Ron"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/total_items_circle_text_view"
+        app:layout_constraintTop_toBottomOf="@id/product_description_text_view" />
+
+    <TextView
+        android:id="@+id/sold_items_circle_text_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/details_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="18 L"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/price_item_circle_text_view"
+        app:layout_constraintTop_toBottomOf="@id/product_description_text_view" />
+
+    <TextView
+        android:id="@+id/review_circle_text_view"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/details_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="810 Ron"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/sold_items_circle_text_view"
+        app:layout_constraintTop_toBottomOf="@id/product_description_text_view" />
+
+    <TextView
+        android:id="@+id/total_items_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:text="@string/total_items"
+        app:layout_constraintTop_toBottomOf="@id/total_items_circle_text_view"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/price_item_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:text="@string/price_item"
+        app:layout_constraintTop_toBottomOf="@id/total_items_circle_text_view"
+        app:layout_constraintStart_toEndOf="@id/total_items_text_view"/>
+
+    <TextView
+        android:id="@+id/sold_items_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:text="@string/sold_items"
+        app:layout_constraintTop_toBottomOf="@id/total_items_circle_text_view"
+        app:layout_constraintStart_toEndOf="@id/price_item_text_view"/>
+
+    <TextView
+        android:id="@+id/review_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="15dp"
+        android:text="@string/review"
+        app:layout_constraintTop_toBottomOf="@id/total_items_circle_text_view"
+        app:layout_constraintStart_toEndOf="@id/sold_items_text_view"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

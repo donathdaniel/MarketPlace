@@ -11,13 +11,13 @@ interface OnTimelineItemClickListener {
     fun onDetails(product: Product)
 }
 
-//interface onProfileClickListener{
-//    fun onProfile(position: Int)
-//}
-
 interface OnMyMarketItemClickListener {
 
-    fun onDelete(position: Int)
+    fun onDelete(product: Product)
 
-    fun onDetails(position: Int)
+    fun onProfile(product: Product)
+
+    fun onDetails(product: Product)
+
+    fun onAcivateOrInactivate(product: Product)
 }

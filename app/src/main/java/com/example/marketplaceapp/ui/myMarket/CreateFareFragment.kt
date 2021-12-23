@@ -120,7 +120,7 @@ class CreateFareFragment : BaseFragment() {
 
             if(validateInput()) {
                 createFareViewModel.addProducts(
-                    accessToken.toString(),
+                    accessToken,
                     ProductAdd(
                         null,
                         titleTextView.text.toString(),
